@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="dx">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/ACM/index.html">
 <meta property="og:site_name" content="dx">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/ACM/"/>
 
 
 
 
 
-  <title>dx</title>
+  <title>分类: ACM | dx</title>
   
 
 
@@ -140,8 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,357 +243,56 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
+
+  
+  
+  
+  <div class="post-block category">
+
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>ACM<small>分类</small>
+        </h1>
+      </div>
+
       
-
-  
-
-  
-  
-  
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/超大背包问题/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dengxin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dx">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/06/06/超大背包问题/" itemprop="url">
+              
+                <span itemprop="name">超大背包问题</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/06/超大背包问题/" itemprop="url">超大背包问题</a></h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T20:40:15+08:00">
-                2018-06-06
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-06-06T20:40:15+08:00"
+              content="2018-06-06" >
+          06-06
+        </time>
+      </div>
 
-            
+    </header>
+  </article>
 
-            
-          </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>此类问题通常一眼看上去像0-1背包问题，但是由于物品重量太大而超内存，往往不能采用DP而必须枚举。</strong></p>
-<h1 id="问题1：-（来自挑战程序设计）"><a href="#问题1：-（来自挑战程序设计）" class="headerlink" title="问题1： （来自挑战程序设计）"></a>问题1： （来自挑战程序设计）</h1><p>有n个重量和价值分别为w[i]和v[i]的物品，从这些物品中挑选总重量不超过W的物品，求所有挑选方案中价值总和的最大值。其中，1 ≤ n ≤ 40， 1 ≤ w[i], v[i] ≤ 10^15, 1 ≤ W ≤ 10^15.<br>思路：<br>挑选物品的方案总共有2^n种，所以不能直接枚举，但是如果将物品分成两半再枚举的话，由于每部分最多只有20个，这是可行的。我们把前半部分中的挑选方法对应的重量和价值总和记为w1、v1，这样在后半部分寻找总重w2 ≤ W - w1时使v2最大的选取方法即可。</p>
-<p>因此，我们要思考从枚举得到的（w2，v2）集合中高效寻找max{v2|w2 ≤ W’}的方法。首先，显然我们可以排除所有w2[i] ≤ w2[j] 并且 v2[i] &gt;= v2[j]的j。这一点可以按照w2、v2的字典序排序后做到。此后剩余的元素都满足w2[i] &lt; w2[j] &lt;=&gt; v2[i] &lt; v2[j]，要计算max{v2|w2 &lt;= W’}的话，只要寻找满足w2[i] &lt;= W’的最大的i就可以了。这可以用二分搜索完成，剩余的元素个数为M的话，一次搜索需要O(logM)的时间。因为M≤2^(n/2)，所以这个算法总的时间复杂度是O(n * 2^(n/2))，可以在实现内解决问题。</p>
-<h1 id="问题二：背包问题"><a href="#问题二：背包问题" class="headerlink" title="问题二：背包问题"></a>问题二：背包问题</h1><p><a href="https://www.nowcoder.com/acm/contest/124/I" target="_blank" rel="noopener">（我是传送门）</a><br>01背包是是一个普通的动态规划入门问题：<br>一共有n个物品, 第i个物品的体积为v[i]；<br>有一个背包容量为m，现在我要挑选一些物品放入这个背包<br>我现在知道在总体积不超过背包容量的情况下,他一共有多少种放法(总体积为0也算一种放法)。<br>1 &lt;= n &lt;= 30, 1 &lt;= m , v[i]&lt;= 1e9</p>
-<p>输入描述:<br>输入有多组，每一组第一行是n和m<br>接下来第二行到第n+1行，第i+1行表示v[i]。<br>输出描述:<br>输出每个样例的方案数，每个答案占据一行。</p>
-<p>输入<br>3 10<br>1<br>2<br>4<br>输出<br>8</p>
-<p>一看就是超内存，只能枚举，直接枚举的复杂度时候2^30≈1e9 会TLE，所以我们采用折半枚举的办法把枚举的复杂度降低一办，另一半就到前一半枚举出来的数组去找。 里面有一个知识点是二进制枚举集合（即用一个长为集合长的数来枚举整个集合第i为1表示取第i个，第i为为0表示不取第i个）</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-#define INF 0x3f3f3f3f
-#define LL long long
-#define ULL unsigned long long
-#define bug(x) cout&lt;&lt;&quot;bug-----&quot;&lt;&lt;x&lt;&lt;endl
-#define R(i,n) for(int i = 0; i &lt; n; i++)
-using namespace std;
-const int mod= 1e9+7;
-const int maxn = 1e6 +10;
-int a[maxn];
-int main()
-{
-
-    //freopen(&quot;C:\\Users\\admin\\Desktop\\1.in&quot;,&quot;r&quot;,stdin);
-    //freopen(&quot;C:\\Users\\admin\\Desktop\\1.out&quot;,&quot;w&quot;,stdout);
-    std::ios::sync_with_stdio(false);
-    int n,m;
-    while(cin&gt;&gt;n&gt;&gt;m)
-    {
-        for(int i=0;i&lt;n;i++)
-        {
-            cin&gt;&gt;a[i];
-        }
-        int t=n&gt;&gt;1;
-        int t2=n-t;
-        vector&lt;LL&gt; v;
-        int sum=0;
-        for(int i=0;i&lt;1&lt;&lt;t;i++)
-        {
-            int ans=0;
-            for(int j=0;j&lt;t;j++)
-            {
-                if(i&amp;(1&lt;&lt;j))
-                {
-                    ans+=a[j];
-                }
-            }
-            v.push_back(ans);
-        }
-        sort(v.begin(),v.end());
-        for(int i=0;i&lt;1&lt;&lt;t2;i++)
-        {
-            int ans=0;
-            for(int j=0;j&lt;t2;j++)
-            {
-                if(i&amp;(1&lt;&lt;j))
-                {
-                    ans+=a[t+j];
-                }
-            }
-            sum += lower_bound(v.begin(), v.end(), m - ans + 1) - v.begin();
-        }
-        cout&lt;&lt;sum&lt;&lt;endl;
-    }
-    return 0;
-}
-</code></pre>
-          
-        
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
   
   
   
-  </article>
-
-
-    
-      
 
   
 
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/博客简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dengxin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="dx">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/06/博客简介/" itemprop="url">个人简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T20:08:57+08:00">
-                2018-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/简介/" itemprop="url" rel="index">
-                    <span itemprop="name">简介</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先感谢WXL666、lrh大佬的搭建让我捡了一个现成的网站，从此也要开始写博客和总结来记录自己的学习历程。<br>本人是一位爱好ACM想成为算法工程师的蒟蒻，二本弱校，现在已经大二了，但是还无项目经历的ACM奖项，计划在今年HNCPC上取得突破。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
