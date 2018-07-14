@@ -259,6 +259,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Total-Hamming-Distance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dengxin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dx">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/Total-Hamming-Distance/" itemprop="url"> Total Hamming Distance </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T21:25:11+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>The Hamming Distance between two integers is the number of different digits between their binary representation. For example the hamming distance between 4(=01002) and 14(11102) is 2.</p>
+<p>Given N integers, A1, A2, … AN, find out the total hamming distance of all pairs of them.  </p>
+<h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><p>The first line contains an integer N.  </p>
+<p>The second line contains N integers denoting A1, A2, … AN.</p>
+<p>For 80% of the data: 1 &lt;= N &lt;= 1000</p>
+<p>For 100% of the data: 1 &lt;= N &lt;= 100000 1 &lt;= Ai &lt;= 1000000000</p>
+<h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>The total hamming distance</p>
+<h1 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h1><p>3<br>1 2 3</p>
+<h1 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h1><p>4</p>
+<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>输入一个n，接下来n个数，然后求这个n个数两两比较二进制位数不同的总和</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先想到暴力n²枚举，优化思路变为 对于每一个二进制位，<strong>统计一下N个数中，有几个在这一位是0，有几个在这一位是1。假设有x个是0，y个是1，那么在这一位的产生的距离就是xy。如果我们把32个二进制位看成是常数，那么时间复杂度是O(N)的。</strong></p>
+<h1 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h1><pre><code>#include&lt;bits/stdc++.h&gt;
+#define INF 0x3f3f3f3f
+#define LL long long
+#define ULL unsigned long long
+#define bug(x) cout&lt;&lt;&quot;bug-----&quot;&lt;&lt;x&lt;&lt;endl
+#define R(i,n) for(int i = 0; i &lt; n; i++)
+using namespace std;
+const int mod= 1e9+7;
+const int maxn = 110 +10;
+LL a[33+10];
+LL b[33+10];
+int main(){
+    //freopen(&quot;C:\\Users\\admin\\Desktop\\1.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;C:\\Users\\admin\\Desktop\\1.out&quot;,&quot;w&quot;,stdout);
+    std::ios::sync_with_stdio(false);
+    int n;
+    cin&gt;&gt;n;
+    for(int i=0;i&lt;n;i++)
+    {
+        LL t;
+        cin&gt;&gt;t;
+        for(int i=0;i&lt;=34;i++)
+        {
+            if(t&amp;1)
+            {
+                a[i]++;
+            }
+            else
+            {
+                b[i]++;
+            }
+            t&gt;&gt;=1;
+            //cout&lt;&lt;t&lt;&lt;endl;
+        }
+    }
+    LL ans=0;
+    for(int i=0;i&lt;=34;i++)
+    {
+        ans+=a[i]*b[i];
+    }
+    cout&lt;&lt;ans&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/超大背包问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -642,7 +838,7 @@ int main()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -664,7 +860,7 @@ int main()
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
